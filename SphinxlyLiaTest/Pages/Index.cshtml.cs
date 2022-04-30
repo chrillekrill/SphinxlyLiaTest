@@ -1,7 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using System.ComponentModel.DataAnnotations;
-using System.Diagnostics;
 
 namespace SphinxlyLiaTest.Pages
 {
@@ -10,6 +9,7 @@ namespace SphinxlyLiaTest.Pages
         [BindProperty]
         public bool IsLoggedIn { get; set; }
         [BindProperty]
+        [Required(ErrorMessage = "Vänligen fyll i ett namn")]
         public string? LoginName { get; set; }
 
 
@@ -25,7 +25,7 @@ namespace SphinxlyLiaTest.Pages
                 {
                     if (!Request.Cookies["UserCookie"].Equals(loginName))
                     {
-                        CreateNewUser();
+                        CreateNewUser(loginName);
                     }
                     else
                     {
@@ -34,13 +34,13 @@ namespace SphinxlyLiaTest.Pages
                     }
                 } else
                 {
-                    CreateNewUser();
+                    CreateNewUser(loginName);
                 }
       
             } 
         }
 
-        private void CreateNewUser()
+        private void CreateNewUser(string username)
         {
             ViewData["Returning"] = "Du är inloggad som";
             Response.Cookies.Append("UserCookie", LoginName);

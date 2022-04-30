@@ -12,6 +12,7 @@ const header = document.getElementById("header");
 
 const close = document.getElementsByClassName("closeButton")[0];
 
+
 modalLoginButton.addEventListener("click", () => {
     modal.classList.toggle('visible');
     container.classList.toggle('blur');
@@ -25,3 +26,4 @@ close.addEventListener("click", () => {
     container.classList.toggle('open');
     header.classList.toggle('blur');
 });
+
