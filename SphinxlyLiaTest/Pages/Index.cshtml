@@ -1,0 +1,54 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+
+    //if (Request.Cookies["UserCookie"] != null)
+    //{
+    //    Response.Cookies.Append("UserCookie", Model.LoginName);
+
+    //    var cookieValue = Request.Cookies["UserCookie"];
+    //} else
+    //{
+    //    var cookieValue = Request.Cookies["UserCookie"];
+    //}
+
+}
+
+<div class="container" id="container">
+    <h2 class="containerh2">ETT NYTT SÄTT ATT UPPTÄCKA</h2>
+
+    <h1 class="containerh1">Silkeslena produkter med <br /> glansiga detaljer</h1>
+</div>
+
+<div id="loginModal" class="loginModal">
+
+    <div class="loginModalContent">
+
+        <img class="closeButton" src="~/images/close-symbol.svg" />
+
+        <h2 class="loginTitle">Logga in</h2>
+
+        <form method="POST" class="modalForm">
+            <div>     
+                <label asp-for="LoginName">Använd ditt namn för att logga in</label>
+                <input asp-for="LoginName" placeholder="Namn" class="nameInput">
+            </div>
+
+            <button type="submit" class="confirmName">Logga in</button>
+
+            <p class="smallText">Genom att logga in godkänner du <u>våra villkor</u></p>
+        </form>
+        
+    </div>
+
+</div>
+
+
+@section scripts{
+<script>
+    if (location.href.includes('?')) {
+        history.pushState({}, null, location.href.split('?')[0]);
+    }
+</script>
+}

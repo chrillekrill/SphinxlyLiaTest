@@ -1,0 +1,71 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - SphinxlyLiaTest</title>
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/SphinxlyLiaTest.styles.css" asp-append-version="true" />
+    <link href='http://fonts.googleapis.com/css?family=Lato:400,700' rel='stylesheet' type='text/css'>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header id="header" class="navigation">
+
+
+        <div class="navigationItems">
+            <a class="" asp-page="/Index"><img src="~/images/test-logga.svg"></a>
+            <nav>
+                <ul class="menu">
+                    <li>
+                        <a asp-area="" asp-page="/Products">PRODUKTER</a>
+                    </li>
+                    <li>
+                        <a asp-area="" asp-page="/About">OM OSS</a>
+                    </li>
+                    <li>
+                        <a class="" asp-area="" asp-page="/Order">BESTÄLLNING</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+
+        <nav>
+            <ul class="mobileMenu">
+                <li>
+                    <a asp-area="" asp-page="/Products">PRODUKTER</a>
+                </li>
+                <li>
+                    <a asp-area="" asp-page="/About">OM OSS</a>
+                </li>
+                <li>
+                    <a class="" asp-area="" asp-page="/Order">BESTÄLLNING</a>
+                </li>
+            </ul>
+        </nav>
+
+        @if (ViewData["UserName"] == null)
+        {
+            <div class="loginButton">
+                <span class="userName"></span>
+                <button id="btn" class="loginAndOut">LOGGA IN</button>
+            </div>
+        }
+        else
+        {
+            <div class="loginButton">
+                <span class="userName">@ViewData["Returning"] @ViewData["UserName"]</span>
+                <button class="loginAndOut"><a asp-page="/Index">LOGGA UT</a></button>
+            </div>
+        }
+
+    </header>
+    <div>
+        <main role="main">
+            @RenderBody()
+        </main>
+    </div>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>
